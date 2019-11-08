@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+void delete_annoying_primes(int n, vector<int> &Array)
+{
+    vector<int> ans;
+    for (int i = 0; i < n; ++i)
+    {
+        bool is_prime = true;
+        if (Array[i] == 0 || Array[i] == 1)
+        {
+            is_prime = false;
+        }
+        for (int j = 2; j <= sqrt(Array[i]); ++j)
+        {
+            if (Array[i] % j == 0)
+            {
+                is_prime = false;
+            }
+        }
+        int cnt = 0;
+        if (is_prime)
+        {
+            for (int j = 0; j < n; ++j)
+            {
+                if (Array[i] == Array[j])
+                {
+                    cnt++;
+                }
+            }
+        }
+        if (cnt <= 1)
+        {
+            ans.push_back(Array[i]);
+        }
+    }
+    Array = ans;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> Array(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> Array[i];
+    }
+    delete_annoying_primes(n, Array);
+    for (int i = 0; i < Array.size(); ++i)
+    {
+        cout << Array[i] << ' ';
+    }
+    return 0;
+}

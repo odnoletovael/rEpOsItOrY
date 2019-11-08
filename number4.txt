@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+void dig_trench(int n, vector<vector<int> > &Array)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            Array[i][j] = abs(i - j);
+        }
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<vector<int> > Array(n, vector<int> (n));
+    dig_trench(n, Array);
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            cout << Array[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    return 0;

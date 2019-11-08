@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+void build_ziggurat(int n, vector<vector<int> > &Array)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            Array[i][j] = min(min(i + 1, j + 1), min(n - i, n - j));
+        }
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<vector<int> > Array(n, vector<int> (n));
+    build_ziggurat(n, Array);
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            cout << Array[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    return 0;
+}
